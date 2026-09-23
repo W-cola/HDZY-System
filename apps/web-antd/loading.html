@@ -1,0 +1,82 @@
+<style data-app-loading="inject-css">
+  html { line-height: 1.15; }
+  .loading {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #172033;
+    background: #f7f9fc;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .loading::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background:
+      radial-gradient(ellipse at 50% 36%, rgb(64 158 255 / 11%) 0, rgb(64 158 255 / 4%) 27%, transparent 56%),
+      linear-gradient(180deg, #fbfcfe 0%, #f4f7fb 100%);
+  }
+  .loading::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    opacity: .36;
+    background-image: linear-gradient(rgb(148 163 184 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(148 163 184 / 5%) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  }
+  .loading.hidden { visibility: hidden; pointer-events: none; opacity: 0; transition: opacity .4s ease, visibility .4s ease; }
+  .loading-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    animation: loading-enter .7s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .loading-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    margin-bottom: 24px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 650;
+    letter-spacing: -.04em;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #5aaeff 0%, #347fe0 100%);
+    box-shadow: 0 14px 30px rgb(55 132 226 / 22%), inset 0 1px 1px rgb(255 255 255 / 45%);
+  }
+  .loading-mark::before { content: '华'; }
+  .loading-brand { margin: 0; color: #172033; font-size: 30px; font-weight: 650; letter-spacing: .12em; }
+  .loading-en { margin-top: 11px; color: #8b98aa; font-size: 10px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; }
+  .loading-line { width: 28px; height: 3px; margin: 24px 0 20px; border-radius: 3px; background: #409eff; }
+  .loading-desc { margin: 0; color: #536176; font-size: 15px; font-weight: 450; letter-spacing: .08em; }
+  .loading-status { display: flex; align-items: center; gap: 9px; margin-top: 34px; color: #9aa7b8; font-size: 12px; letter-spacing: .08em; }
+  .loading-status i { width: 6px; height: 6px; border-radius: 50%; background: #409eff; box-shadow: 0 0 0 4px rgb(64 158 255 / 12%); animation: loading-pulse 1.3s ease-in-out infinite; }
+  @keyframes loading-pulse { 50% { opacity: .35; transform: scale(.72); } }
+  @keyframes loading-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .dark .loading { color: #f3f6fa; background: #111827; }
+  .dark .loading::before { background: radial-gradient(ellipse at 50% 36%, rgb(64 158 255 / 17%), transparent 52%), linear-gradient(180deg, #111827, #0f172a); }
+  .dark .loading::after { opacity: .18; }
+  .dark .loading-brand { color: #f3f6fa; }
+  .dark .loading-desc { color: #b7c2d1; }
+</style>
+<div class="loading" id="__app-loading__">
+  <div class="loading-shell">
+    <div class="loading-mark"></div>
+    <p class="loading-brand">华档致远</p>
+    <div class="loading-en">HUADANG ZHIYUAN</div>
+    <div class="loading-line"></div>
+    <p class="loading-desc">企业运营管理平台</p>
+    <div class="loading-status"><i></i><span>正在进入工作台</span></div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "stack": "vue-vben-antd",
+  "persist_paths": [
+    "data/**",
+    "packages/**",
+    "internal/vendor-vben/**",
+    "apps/**",
+    "internal/**",
+    "scripts/**",
+    "AGENTS.md",
+    "docs/**"
+  ],
+  "services": {
+    "api": {
+      "install": "true",
+      "migrate": "true",
+      "dev": "bash scripts/dev-start.sh api",
+      "cwd": ".",
+      "port": 5320,
+      "health": "/api/status"
+    },
+    "web": {
+      "install": "true",
+      "lint": "bash scripts/wait-runtime.sh && pnpm --filter @vben/web-antd run typecheck",
+      "check": "bash scripts/wait-runtime.sh && pnpm --filter @vben/web-antd run build",
+      "dev": "bash scripts/dev-start.sh web",
+      "cwd": ".",
+      "port": 5173,
+      "health": "/"
+    }
+  },
+  "preview": "web"
+}

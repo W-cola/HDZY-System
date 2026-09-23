@@ -1,0 +1,27 @@
+{
+  "name": "@vben/server",
+  "version": "5.7.0",
+  "description": "",
+  "private": true,
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "migrate": "node scripts/migrate.mjs",
+    "build": "nitro build --preset node-server",
+    "start": "nitro dev",
+    "preview": "pnpm run migrate && PGLITE_DATA_DIR=../../data/pg nitro build --preset node-server && PGLITE_DATA_DIR=../../data/pg NITRO_HOST=0.0.0.0 NITRO_PORT=5320 node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@faker-js/faker": "catalog:",
+    "jsonwebtoken": "catalog:",
+    "pg": "catalog:",
+    "@electric-sql/pglite": "catalog:",
+    "nitropack": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "catalog:",
+    "h3": "catalog:"
+  }
+}

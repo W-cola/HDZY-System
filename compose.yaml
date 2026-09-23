@@ -1,0 +1,20 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "luffy.entrypoint=true"
+      - "luffy.port=5320"
+      - "luffy.database=postgres"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+      INITIAL_ADMIN_PASSWORD: ${INITIAL_ADMIN_PASSWORD:-123456}
+    volumes:
+      - huadang-zhiyuan-data:/app/data
+
+volumes:
+  huadang-zhiyuan-data:
+    name: ${slug}-data
